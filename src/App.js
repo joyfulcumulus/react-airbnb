@@ -13,14 +13,14 @@ function App() {
     "lng": 2.343543
   };
 
+  const flats = [flat, flat, flat, flat];
+
   return (
     <div className={styles.app}>
       <div className={styles.main}>
         <div className={styles.search}>Search Box</div>
         <div className={styles.flats}>
-          <Flat flat={flat}/>
-          <Flat flat={flat}/>
-          <Flat flat={flat}/>
+          {flats.map(flat => <Flat flat={flat} />)}
         </div>
       </div>
       <div className={styles.map}>

@@ -4,8 +4,11 @@
 
 .flatPicture {
   height: 200px;
+  background-size: cover;
+  background-position: center;
 }
 
 .flatTitle {
-
+  margin-top: 1rem;
+  font-weight: bold;
 }

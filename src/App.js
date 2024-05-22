@@ -1,6 +1,6 @@
 import React from 'react';
 import Flat from './components/flat';
-import './App.css';
+import styles from './App.module.css';
 
 function App() {
   const flat = {
@@ -14,8 +14,17 @@ function App() {
   };
 
   return (
-    <div>
-      <Flat flat={flat}/>
+    <div className={styles.app}>
+      <div className={styles.main}>
+        <div className={styles.search}>Search Box</div>
+        <div className={styles.flats}>
+          <Flat flat={flat}/>
+          <Flat flat={flat}/>
+        </div>
+      </div>
+      <div className={styles.map}>
+        Map Image
+      </div>
     </div>
   );
 }

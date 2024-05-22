@@ -6,7 +6,24 @@ import styles from './App.module.css';
 
 function App() {
   const [flats, setFlats] = useState([]);
+  const [filteredFlats, setFilteredFlats] = useState([]);
   const [userInput, setUserInput] = useState('');
+
+  useEffect( () => {
+    const url = "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json";
+    // source: https://github.com/lewagon/flats-boilerplate/blob/master/flats.json
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setFlats(data);
+        setFilteredFlats(data);
+      })
+  }, [])
+
+  useEffect( () => {
+    const filtered = flats.filter(flat => flat.name.toLowerCase().includes(userInput.toLowerCase()));
+    setFilteredFlats(filtered);
+  }, [flats, userInput])
 
   const defaultMapProps = {
     center: {
@@ -16,15 +33,6 @@ function App() {
     zoom: 11
   };
 
-  useEffect( () => {
-    const url = "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json";
-    // source: https://github.com/lewagon/flats-boilerplate/blob/master/flats.json
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        setFlats(data);
-      })
-  }, [])
 
   return (
     <div className={styles.app}>
@@ -33,7 +41,7 @@ function App() {
           <Search userInput={userInput} collectInput={setUserInput} />
         </div>
         <div className={styles.flats}>
-          {flats.map(flat => <Flat key={flat.id} flat={flat} />)}
+          {filteredFlats.map(flat => <Flat key={flat.id} flat={flat} />)}
         </div>
       </div>
       <div className={styles.map}>

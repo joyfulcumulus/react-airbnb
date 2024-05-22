@@ -20,6 +20,7 @@ function App() {
         <div className={styles.flats}>
           <Flat flat={flat}/>
           <Flat flat={flat}/>
+          <Flat flat={flat}/>
         </div>
       </div>
       <div className={styles.map}>

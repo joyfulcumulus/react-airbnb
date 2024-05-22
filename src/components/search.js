@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from "./search.module.css";
 
-function Search() {
+function Search({userInput, collectInput}) {
+
   return (
-    <form className={styles.searchForm}>
+    <form>
       <input
         className={styles.searchBox}
         type="text"
         placeholder="Search for apartments"
-        // value={}
-        // onChange={}
-      />
-      <input
-        type="submit"
-        value="Submit"
+        value={userInput}
+        onChange={ (event) => {collectInput(event.target.value)} }
       />
     </form>
   )

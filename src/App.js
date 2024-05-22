@@ -8,7 +8,7 @@ function App() {
   const [flats, setFlats] = useState([]);
   const [userInput, setUserInput] = useState('');
 
-  const defaultProps = {
+  const defaultMapProps = {
     center: {
       lat: 48.8575,
       lng: 2.3514
@@ -30,7 +30,7 @@ function App() {
     <div className={styles.app}>
       <div className={styles.main}>
         <div className={styles.search}>
-          <Search />
+          <Search userInput={userInput} collectInput={setUserInput} />
         </div>
         <div className={styles.flats}>
           {flats.map(flat => <Flat key={flat.id} flat={flat} />)}
@@ -39,8 +39,8 @@ function App() {
       <div className={styles.map}>
         <GoogleMapReact
           // bootstrapURLKeys={{ key: /* API KEY HERE */ }}
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}
+          defaultCenter={defaultMapProps.center}
+          defaultZoom={defaultMapProps.zoom}
         >
         </GoogleMapReact>
       </div>
